@@ -1,0 +1,57 @@
+build/
+cmake-build-debug/
+cmake-build-debug-mingw-stm32/
+.cache/
+build/.ninja_deps
+build/.ninja_log
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Backups
+**/*.bak
+
+# Keil MDK-ARM: ignore generated artifacts, keep project files
+MDK-ARM/dog/
+MDK-ARM/**/Objects/
+MDK-ARM/**/Listings/
+MDK-ARM/**/*.o
+MDK-ARM/**/*.d
+MDK-ARM/**/*.crf
+MDK-ARM/**/*.lst
+MDK-ARM/**/*.lnp
+MDK-ARM/**/*.map
+MDK-ARM/**/*.axf
+MDK-ARM/**/*.htm
+MDK-ARM/**/*.dep
+MDK-ARM/**/*.scvd
+MDK-ARM/**/*.uvguix.*
+MDK-ARM/**/JLinkLog.txt
+MDK-ARM/**/JLinkSettings.ini
+MDK-ARM/**/.settings/
+MDK-ARM/**/.vscode/

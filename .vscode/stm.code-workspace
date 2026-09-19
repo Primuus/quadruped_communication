@@ -1,0 +1,116 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "launch": {
+        "configurations": [
+            {
+                "cwd": "${workspaceRoot}",
+                "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
+                "name": "OpenOCD",
+                "request": "launch",
+                "type": "cortex-debug",
+                "servertype": "openocd",
+                "configFiles": [
+                    "${workspaceFolder}/Core/openocd.cfg"
+                ],
+                "searchDir": [],
+                "runToEntryPoint": "main",
+                "showDevDebugOutput": "none",
+                // "svdFile": "${workspaceFolder}/STM32F429x.svd",
+                // "preLaunchTask": "Build",
+                "armToolchainPath": "D:/EnvToolChains/arm-gnu-toolchain/bin", // 更换为自己的路径
+                "liveWatch": {
+                    "enabled": true,
+                    "samplesPerSecond": 4,
+                }
+            },
+        ]
+    },
+    "settings": {
+        "editor.formatOnSave": true,
+        "cmake.generator": "Ninja",
+        "cortex-debug.openocdPath": "D:/EnvToolChains/OpenOCD/bin/openocd.exe", // 更换为自己的路径
+        "cortex-debug.armToolchainPath": "D:/EnvToolChains/arm-gnu-toolchain/bin/arm-none-eabi-gdb.exe", // 更换为自己的路径
+        // "cortex-debug.openocdPath": "/usr/bin/openocd",
+        // "cortex-debug.armToolchainPath": "/usr/bin/arm-none-eabi-gdb"
+        "VsCodeTaskButtons.tasks": [
+            {
+                "label": "$(notebook-move-down) ⏬",
+                "task": "OpenOCDFlash",
+            },
+        ],
+        "cortex-debug.variableUseNaturalFormat": true,
+        "files.associations": {
+            "main.h": "c",
+            "string.h": "c",
+            "stm32h7xx_hal_uart.h": "c",
+            "qlp_protocol.h": "c",
+            "portmacro.h": "c",
+            "freertos.h": "c",
+            "task.h": "c"
+        },
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "OpenOCDFlash",
+                "type": "process",
+                "command": "openocd",
+                "args": [
+                    "-f",
+                    "${workspaceFolder}/Core/openocd.cfg",
+                    "-c",
+                    "program build/${workspaceRootFolderName}.elf verify reset exit"
+                ],
+                "dependsOn": [
+                    // "ReleaseBuild"
+                ],
+                "options": {
+                    "cwd": "${workspaceRoot}"
+                },
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "Build",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "--build",
+                    "./build",
+                    "--config",
+                    "Debug",
+                    "--target",
+                    "all"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "presentation": {
+                    "reveal": "always",
+                    "panel": "new"
+                },
+            },
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "akamud.vscode-theme-onedark",
+            "dominic-valerio.bash-runner",
+            "twxs.cmake",
+            "josetr.cmake-language-support-vscode",
+            "ms-vscode.cmake-tools",
+            "adpyke.codesnap",
+            "marus25.cortex-debug",
+            "usernamehw.errorlens"
+        ],
+        "unwantedRecommendations": []
+    }
+}
