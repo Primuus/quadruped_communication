@@ -4,6 +4,14 @@ cmake-build-debug-mingw-stm32/
 .cache/
 build/.ninja_deps
 build/.ninja_log
+# IDE / editor generated files
+.idea/
+*.iml
+.cproject
+.project
+.metadata/
+.vscode/compile_commands.json
+compile_commands.json
 # General
 .DS_Store
 .AppleDouble
